@@ -7,14 +7,26 @@
     <title>Link Event Checkpoint</title>
 </head>
 <body>
-    <a href="#">Some Link</a>
+    <a id="aLink" href="http://github.com/forrest-wilson">Some Link</a>
 
-    <!-- jQuery CDN Link -->
-    <script src='https://code.jquery.com/jquery-2.2.4.min.js' integrity='sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=' crossorigin='anonymous'></script>
+    <p id="someParagraph"></p>
+
     <script>
-        $(document).ready(function() {
+        (function() {
+            var anchorElement = document.getElementById("aLink");
 
-        });
+            anchorElement.addEventListener("click", function(e) {
+                e.preventDefault();
+                var href = anchorElement.getAttribute("href");
+
+                document.getElementById("someParagraph").textContent = href;
+
+                setTimeout(function() {
+                    window.location = href;
+                }, 3000);
+            });
+
+        })();
     </script>
 </body>
 </html>
